@@ -2,7 +2,7 @@
 Node package for track Correios objects.
 
 ### Installation
-````bash
+````
 npm install correios.js
 ````
 
@@ -10,24 +10,24 @@ npm install correios.js
 ```javascript
 const correios = require('correios.js');
 
-correios.track('XXXXXXXXXXXXX').then((response) => {
+correios.track('TRACKING_CODE').then((response) => {
     console.log(response);
 }).catch((error) => {
     console.log(error);
 });
 ```
 
-### Return
+### Response example
 ```json
 {
-    "codigo": "XXXXXXXXXXXXX",
-    "eventos": [
+    "code": "TRACKING_CODE",
+    "events": [
         {
-            "data": "01/01/2019",
-            "hora": "00:00",
-            "local": "CURITIBA / PR",
-            "evento": "Objeto encaminhado",
-            "mensagem": "de Unidade de Tratamento em CURITIBA / PR para Agência dos Correios em Mariopolis / PR"
+            "date": "DD/MM/YYYY",
+            "hour": "HH:mm",
+            "location": "LOCATION",
+            "event": "EVENT",
+            "message": "MESSAGE"
         }
     ]
 }
