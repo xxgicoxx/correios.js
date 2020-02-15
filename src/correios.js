@@ -3,11 +3,12 @@ const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 
 /**
- * Track object.
- * @param {string} code Code of Correios
- * @returns {Promise} Return object { code: '', events: [] }
+ * Track object
+ *
+ * @param {!string} code code of Correios
+ * @returns {Promise} return Promise
  */
-async function track(code) {
+async function track(code = '') {
   try {
     const options = {
       method: 'POST',
