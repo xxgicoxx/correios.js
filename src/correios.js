@@ -1,6 +1,6 @@
-const request = require('request-promise-native').defaults({ followRedirect: true, followAllRedirects: true });
+const fetch = require('node-fetch');
+const FormData = require('form-data');
 const cheerio = require('cheerio');
-const iconv = require('iconv-lite');
 
 /**
  * Track object
@@ -10,21 +10,14 @@ const iconv = require('iconv-lite');
  */
 async function track(code = '') {
   try {
-    const options = {
-      method: 'POST',
-      url: 'https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm',
-      form: {
-        acao: 'track',
-        objetos: code,
-      },
-      encoding: null,
-      timeout: 10000,
-    };
+    const form = new FormData();
+
+    form.append('acao', 'track');
+    form.append('objetos', code);
 
     const object = { code, events: [] };
-    const body = await request(options);
-    const bodyDecode = iconv.decode(body, 'iso-8859-1');
-    const $ = cheerio.load(bodyDecode, { decodeEntities: false });
+    const body = await fetch('https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm', { method: 'POST', body: form });
+    const $ = cheerio.load(await body.textConverted());
 
     let data;
     let evento;
@@ -47,7 +40,9 @@ async function track(code = '') {
     });
 
     return object;
-  } catch (ex) {
+  } catch (error) {
+    console.error(error);
+
     throw new Error('Error, try again later');
   }
 }
