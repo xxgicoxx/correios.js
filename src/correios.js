@@ -5,11 +5,15 @@ const cheerio = require('cheerio');
 /**
  * Track object
  *
- * @param {!string} code code of Correios
- * @returns {Promise} return Promise
+ * @param {string} code code of Correios
+ * @returns {Promise} Promise
  */
-async function track(code = '') {
+async function track(code) {
   try {
+    if(!code) {
+      throw new Error('Code cannot be empty');
+    }
+
     const form = new FormData();
 
     form.append('acao', 'track');
@@ -41,9 +45,7 @@ async function track(code = '') {
 
     return object;
   } catch (error) {
-    console.error(error);
-
-    throw new Error('Error, try again later');
+    throw new Error(error);
   }
 }
 
