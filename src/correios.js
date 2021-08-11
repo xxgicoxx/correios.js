@@ -10,8 +10,8 @@ const cheerio = require('cheerio');
  */
 async function track(code) {
   try {
-    if(!code) {
-      throw new Error('Code cannot be empty');
+    if (!code) {
+      throw new Error("'code' cannot be empty");
     }
 
     const form = new FormData();
