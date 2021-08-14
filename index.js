@@ -1,1 +1,3 @@
-module.exports = require('./src/correios');
+const { CorreiosController } = require('./src/controllers');
+
+module.exports = CorreiosController;

@@ -1,27 +1,18 @@
-const fetch = require('node-fetch');
-const FormData = require('form-data');
 const cheerio = require('cheerio');
 
-/**
- * Track object
- *
- * @param {string} code code of Correios
- * @returns {Promise} Promise
- */
-async function track(code) {
-  try {
+const { correiosConfig } = require('../configs');
+const { request } = require('../utils');
+
+class CorreiosService {
+  async track(code) {
     if (!code) {
       throw new Error("'code' cannot be empty");
     }
 
-    const form = new FormData();
-
-    form.append('acao', 'track');
-    form.append('objetos', code);
-
     const object = { code, events: [] };
-    const body = await fetch('https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm', { method: 'POST', body: form });
-    const $ = cheerio.load(await body.textConverted());
+
+    const body = await request({ url: correiosConfig.url, method: 'POST', form: { acao: 'track', objetos: code } });
+    const $ = cheerio.load(body);
 
     let data;
     let evento;
@@ -44,11 +35,7 @@ async function track(code) {
     });
 
     return object;
-  } catch (error) {
-    throw new Error(error);
   }
 }
 
-module.exports = {
-  track,
-};
+module.exports = CorreiosService;

@@ -15,7 +15,9 @@ npm install correios.js
 
 # Example
 ```javascript
-const correios = require('correios.js');
+const Correios = require('correios.js');
+
+const correios = new Correios();
 
 (async () => {
   try {
