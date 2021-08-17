@@ -2,7 +2,7 @@
 Node.js package for track Correios objects.
 
 <p align="center">
-  <img src="https://i.imgur.com/CqURI8i.png">
+  <img src="assets/imgs/correios.png">
 </p>
 
 # Prerequisites
