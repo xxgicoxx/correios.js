@@ -1,4 +1,4 @@
-# Correios.js
+# correios.js
 Node.js package for track Correios objects.
 
 <p align="center">
