@@ -27,11 +27,11 @@
     "cheerio": "^1.0.0-rc.10",
     "encoding": "^0.1.13",
     "form-data": "^4.0.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.2.3"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.19.1"
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }
