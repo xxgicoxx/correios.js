@@ -1,5 +1,5 @@
 const correios = {
-  url: 'https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm',
+  url: 'https://www.linkcorreios.com.br',
 };
 
 module.exports = correios;

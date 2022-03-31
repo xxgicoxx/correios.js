@@ -13,7 +13,7 @@ async function request(options = {}) {
   const form = new FormData();
   Object.keys(options.form || {}).forEach((key) => form.append(key, options.form[key]));
 
-  const result = await fetch(`${options.url}`, { method: options.method || 'GET', body: form });
+  const result = await fetch(`${options.url}`, { method: options.method || 'GET', body: options.form ? form : null });
 
   return result.textConverted();
 }

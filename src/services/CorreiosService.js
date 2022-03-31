@@ -11,27 +11,41 @@ class CorreiosService {
 
     const object = { code, events: [] };
 
-    const body = await request({ url: correiosConfig.url, method: 'POST', form: { acao: 'track', objetos: code } });
+    const body = await request({ url: `${correiosConfig.url}?id=${code}` });
     const $ = cheerio.load(body);
 
-    let data;
-    let evento;
+    $('div.singlepost').find('ul').each(async (index, ul) => {
+      const li = $(ul).find('li');
+      const event = await this.extract($, li);
 
-    $('table.listEvent.sro tbody tr').each((index, elm) => {
-      const td = $(elm).find('td');
+      if (event) {
+        object.events.push(event);
+      }
+    });
 
-      data = $(td).first().text().split('\n');
-      data = data.filter((n) => n);
+    return object;
+  }
 
-      evento = $(td).last().html().split('<br>');
+  async extract($, li) {
+    const object = {};
 
-      object.events.push({
-        date: data[0].trim(),
-        hour: data[1].trim(),
-        location: data[2].trim(),
-        event: evento[0].replace(/[\n\r]/g, '').replace('<strong>', '').replace('</strong>', '').trim(),
-        message: evento[1].replace(/\s\s+/g, ' ').trim(),
-      });
+    $(li).each((index, action) => {
+      const text = $(action).text();
+
+      if (text.includes('Status: ')) {
+        object.event = text.replace('Status: ', '');
+      } else if (text.includes('Data  : ')) {
+        const dateHour = text.replace('Data  : ', '').split('|');
+
+        object.date = dateHour[0].toString().trim();
+        object.hour = dateHour[1].toString().replace('Hora: ', '').trim();
+      } else if (text.includes('Local: ')) {
+        object.location = text.replace('Local: ', '');
+      } else if (text.includes('Origem: ')) {
+        object.origin = text.replace('Origem: ', '');
+      } else if (text.includes('Destino: ')) {
+        object.destination = text.replace('Destino: ', '');
+      }
     });
 
     return object;
