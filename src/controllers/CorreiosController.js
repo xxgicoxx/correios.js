@@ -8,7 +8,7 @@ class CorreiosController {
   /**
    * Track object
    *
-   * @param {string} code code of Correios
+   * @param {string} code Code of Correios
    *
    * @returns {Promise} Promise
    */

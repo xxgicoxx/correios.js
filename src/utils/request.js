@@ -8,6 +8,7 @@ const FormData = require('form-data');
  * @param {string} options.url URL
  * @param {Object} [options.form] Form data
  * @param {string} [options.method = 'GET'] Method
+ * @param {string} [options.text = false] Return type
  */
 async function request(options = {}) {
   const form = new FormData();
@@ -15,7 +16,7 @@ async function request(options = {}) {
 
   const result = await fetch(`${options.url}`, { method: options.method || 'GET', body: options.form ? form : null });
 
-  return result.textConverted();
+  return options.text ? result.textConverted() : result.json();
 }
 
 module.exports = request;

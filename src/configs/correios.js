@@ -1,5 +1,6 @@
 const correios = {
-  url: 'https://www.linkcorreios.com.br',
+  api: 'https://proxyapp.correios.com.br/v1/sro-rastro/',
+  link: 'https://www.linkcorreios.com.br',
 };
 
 module.exports = correios;
