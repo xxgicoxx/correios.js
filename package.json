@@ -2,7 +2,7 @@
   "name": "correios.js",
   "displayName": "correios.js",
   "version": "5.0.0",
-  "description": "Node.js package for track Correios objects",
+  "description": "Node.js package for track Correios objects.",
   "author": "Giovani de Oliveira <giovanioliveira@outlook.com.br>",
   "license": "MIT",
   "main": "index.js",
