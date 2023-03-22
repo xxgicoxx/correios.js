@@ -7,7 +7,7 @@ class ApiCorreiosService {
     const responseEvents = response.objetos[0].eventos;
 
     if (!responseEvents) {
-      throw new Error(constants.ERROR_EMPTY_EVENTS);
+      throw new Error(constants.MESSAGE_EMPTY_EVENTS);
     }
 
     const events = [];

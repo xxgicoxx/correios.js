@@ -12,7 +12,7 @@ class CorreiosService {
 
     try {
       if (!code || code.length < constants.CODE_MIN || code.length > constants.CODE_MAX) {
-        throw new Error(constants.ERROR_INVALID_CODE);
+        throw new Error(constants.MESSAGE_INVALID_CODE);
       }
 
       const api = apiCorreiosService.track(code);

@@ -1,8 +1,17 @@
 module.exports = Object.freeze({
-  ERROR_INVALID_CODE: 'Invalid code',
-  ERROR_TRY_AGAIN: 'Error, try again later',
-  ERROR_EMPTY_EVENTS: 'Empty events',
+  MESSAGE_EMPTY_EVENTS: 'Empty events',
+  MESSAGE_INVALID_CODE: 'Invalid code',
+  MESSAGE_ERROR_TRY_AGAIN: 'Error, try again later',
 
-  CODE_MIN: 13,
+  TAG_DATA: 'Data  : ',
+  TAG_DESTINO: 'Destino: ',
+  TAG_HORA: 'Hora: ',
+  TAG_LOCAL: 'Local: ',
+  TAG_ORIGEM: 'Origem: ',
+  TAG_STATUS: 'Status: ',
+
   CODE_MAX: 13,
+  CODE_MIN: 13,
+
+  EMPTY: '',
 });
