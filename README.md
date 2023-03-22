@@ -5,6 +5,9 @@ Node.js package for track Correios objects.
   <img src="assets/imgs/correios.png">
 </p>
 
+# Features
+* Track Correios objects
+
 # Prerequisites
 * [Node.js](https://nodejs.org/en/)
 
